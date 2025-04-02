@@ -6,8 +6,8 @@ workflows:
     max_build_duration: 60
     scripts:
       - name: Install dependencies
-        script: flutter pub get
+        script: ./gradlew clean build
       - name: Build iOS
-        script: flutter build ios --release --no-codesign
+        script: ./gradlew :iosApp:build
     artifacts:
-      - build/ios/iphoneos/*.ipa
+      - iosApp/build/*.ipa
