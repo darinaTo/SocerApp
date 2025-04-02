@@ -5,9 +5,15 @@ workflows:
     name: iOS Build
     max_build_duration: 60
     scripts:
+      # Install dependencies and set permissions
       - name: Install dependencies
-        script: ./gradlew clean build
+        run: |
+          chmod +x gradlew
+          ./gradlew clean build  # Ви можете додати це для очищення та побудови проєкту
+
+      # Build the iOS app
       - name: Build iOS
         script: ./gradlew :iosApp:build
+
     artifacts:
       - iosApp/build/*.ipa
