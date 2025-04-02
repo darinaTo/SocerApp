@@ -3,15 +3,21 @@ workflows:
     name: iOS Build
     max_build_duration: 60
     scripts:
-      # Встановлення залежностей та надання прав доступу до gradlew
+      # Крок 1: Встановлення залежностей та надання прав доступу до gradlew
       - name: Install dependencies
         script: |
           chmod +x gradlew
-          ./gradlew clean build  # Команда для очищення та побудови проєкту
+          ./gradlew clean build  # Очистити та побудувати проєкт
 
-      # Побудова iOS додатка
+      # Крок 2: Побудова iOS додатка
       - name: Build iOS
-        script: ./gradlew :iosApp:build
+        script: ./gradlew :iosApp:build  # Замініть на правильне ім'я вашого iOS модулю
+
+      # Крок 3: Завантаження на TestFlight
+      - name: Upload to TestFlight
+        script: |
+          # Завантажити артефакт (IPA файл) на TestFlight
+          ./gradlew :iosApp:uploadTestFlight  # Замініть на відповідну команду для вашого проєкту
 
     # Артефакти для зберігання результату побудови (IPA файл)
     artifacts:
