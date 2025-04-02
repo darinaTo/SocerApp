@@ -10,13 +10,14 @@ plugins {
 }
 
 kotlin {
+    tasks.create("testClasses")
     androidTarget {
         @OptIn(ExperimentalKotlinGradlePluginApi::class)
         compilerOptions {
             jvmTarget.set(JvmTarget.JVM_11)
         }
     }
-    
+
     listOf(
         iosX64()
     ).forEach { iosTarget ->
@@ -25,7 +26,8 @@ kotlin {
             isStatic = true
         }
     }
-    
+
+
     sourceSets {
         androidMain.dependencies {
             implementation(compose.preview)
@@ -47,6 +49,7 @@ kotlin {
             implementation(compose.material3)
             implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.4.0")
             implementation(libs.bundles.ktor)
+            implementation(libs.skiko)
 
             api(libs.koin.core)
             implementation(libs.koin.compose)
@@ -73,6 +76,10 @@ android {
         versionCode = 1
         versionName = "1.0"
     }
+
+    sourceSets {
+        sourceSets["main"].res.srcDirs("src/androidMain/res")
+    }
     packaging {
         resources {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
@@ -88,6 +95,7 @@ android {
         targetCompatibility = JavaVersion.VERSION_11
     }
 }
+
 
 dependencies {
     debugImplementation(compose.uiTooling)
