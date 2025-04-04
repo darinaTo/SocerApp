@@ -7,6 +7,4 @@ import sockerapp.composeapp.generated.resources.Res
 import sockerapp.composeapp.generated.resources.chakrapetch_bold
 
 @Composable
-fun CustomFontFamily(): FontFamily {
-    return FontFamily(Font(Res.font.chakrapetch_bold))
-}
+fun CustomFontFamily(): FontFamily = FontFamily(Font(Res.font.chakrapetch_bold))

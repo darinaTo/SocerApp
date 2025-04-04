@@ -1,4 +1,4 @@
-package org.example.project
+package org.example.project.app
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity

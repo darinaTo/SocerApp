@@ -20,9 +20,8 @@ fun AppNavigation() {
         }
     } else {
         NavContent(navController = navController, innerPadding = PaddingValues(0.dp))
-
     }
 }
-fun shouldShowBottomNav(backStackEntry: NavBackStackEntry?): Boolean {
-    return backStackEntry?.destination?.route in listOf(Screen.Home.route, Screen.Live.route, Screen.Stat.route, Screen.Setting.route)
-}
+
+fun shouldShowBottomNav(backStackEntry: NavBackStackEntry?): Boolean =
+    backStackEntry?.destination?.route in listOf(Screen.Home.route, Screen.Live.route, Screen.Stat.route, Screen.Setting.route)

@@ -7,7 +7,10 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 
 @Composable
-fun NavContent(navController: NavHostController, innerPadding: PaddingValues) {
+fun NavContent(
+    navController: NavHostController,
+    innerPadding: PaddingValues,
+) {
     NavHost(navController = navController, startDestination = Screen.Preloader.route) {
         composable(Screen.Preloader.route) {
             /*PreloaderScreen(onNavigateToWelcome = {

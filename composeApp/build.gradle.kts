@@ -38,6 +38,8 @@ kotlin {
             implementation(libs.koin.android)
             implementation(libs.koin.androidx.compose)
             implementation ("io.insert-koin:koin-androidx-workmanager:3.2.0")
+            implementation(libs.androidx.work.runtime.ktx)
+            implementation(libs.koin.androidx.workmanager)
 
         }
         commonMain.dependencies {
@@ -98,6 +100,7 @@ android {
 
 
 dependencies {
+    implementation(libs.firebase.components)
     debugImplementation(compose.uiTooling)
 }
 

@@ -28,37 +28,39 @@ fun BottomNavigationBar(navController: NavController) {
     var selectedItem by remember { mutableIntStateOf(0) }
     val items =
         listOf(Screen.Home.route, Screen.Live.route, Screen.Stat.route, Screen.Setting.route)
-    val selectedIcons = listOf(
-        Res.drawable.icon_home,
-        Res.drawable.live_icon,
-        Res.drawable.stats_icon,
-        Res.drawable.settings_icon
-    )
-    val unselectedIcons = listOf(
-        Res.drawable.home_icon,
-        Res.drawable.live_not_choosen,
-        Res.drawable.stats_not_choosen,
-        Res.drawable.settings_icon
-    )
+    val selectedIcons =
+        listOf(
+            Res.drawable.icon_home,
+            Res.drawable.live_icon,
+            Res.drawable.stats_icon,
+            Res.drawable.settings_icon,
+        )
+    val unselectedIcons =
+        listOf(
+            Res.drawable.home_icon,
+            Res.drawable.live_not_choosen,
+            Res.drawable.stats_not_choosen,
+            Res.drawable.settings_icon,
+        )
     NavigationBar(
         containerColor = MaterialTheme.colorScheme.surface,
-        contentColor = Color.Unspecified
+        contentColor = Color.Unspecified,
     ) {
         items.forEachIndexed { index, item ->
             val isSelected = selectedItem == index
             NavigationBarItem(
                 icon = {
                     Image(
-                        painter = if (isSelected) {
-                            painterResource(selectedIcons[index])
-                        } else {
-                            painterResource(unselectedIcons[index])
-                        },
+                        painter =
+                            if (isSelected) {
+                                painterResource(selectedIcons[index])
+                            } else {
+                                painterResource(unselectedIcons[index])
+                            },
                         contentDescription = item,
-                        colorFilter = if (isSelected) null else ColorFilter.tint(Color.Gray)
+                        colorFilter = if (isSelected) null else ColorFilter.tint(Color.Gray),
                     )
-                }
-                ,
+                },
                 label = {},
                 selected = isSelected,
                 onClick = {
@@ -69,11 +71,12 @@ fun BottomNavigationBar(navController: NavController) {
                         popUpTo(Screen.Home.route) { inclusive = true }
                     }
                 },
-                colors = NavigationBarItemDefaults.colors(
-                    unselectedIconColor = Color.Gray,
-                    selectedIconColor = Color.Unspecified,
-                    indicatorColor = Color.Transparent
-                )
+                colors =
+                    NavigationBarItemDefaults.colors(
+                        unselectedIconColor = Color.Gray,
+                        selectedIconColor = Color.Unspecified,
+                        indicatorColor = Color.Transparent,
+                    ),
             )
         }
     }
